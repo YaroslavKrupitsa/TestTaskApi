@@ -6,6 +6,42 @@
         xmlns:local="clr-namespace:TestTaskApi"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
+    <Window.Resources>
+        <Storyboard x:Key="CloseSlidingMenu">
+            <DoubleAnimation Storyboard.TargetName="SlidingMenu"
+                             Storyboard.TargetProperty="Width" From="200" To="0"
+                             Duration="0:0:0.3"/>
+            <DoubleAnimation Storyboard.TargetName="ButtonClose"
+                             Storyboard.TargetProperty="Width" From="40" To="0"
+                             Duration="0:0:0"/>
+            <DoubleAnimation Storyboard.TargetName="ButtonOpen"
+                             Storyboard.TargetProperty="Width" From="0" To="40"
+                             Duration="0:0:0"/>
+        </Storyboard>
+
+        <Storyboard x:Key="OpenSlidingMenu">
+            <DoubleAnimation Storyboard.TargetName="SlidingMenu"
+                     Storyboard.TargetProperty="Width" From="0" To="200"
+                     Duration="0:0:0.3"/>
+            <DoubleAnimation Storyboard.TargetName="ButtonOpen"
+                 Storyboard.TargetProperty="Width" From="40" To="0"
+                             Duration="0:0:0"/>
+            <DoubleAnimation Storyboard.TargetName="ButtonClose"
+                 Storyboard.TargetProperty="Width" From="0" To="40"
+                             Duration="0:0:0"/>
+        </Storyboard>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonClose">
+            <BeginStoryboard Storyboard="{StaticResource CloseSlidingMenu}"></BeginStoryboard>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpen">
+            <BeginStoryboard Storyboard="{StaticResource OpenSlidingMenu}"></BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+
     <Grid Background="#FF100F0F">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -13,23 +49,33 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="{Binding ElementName=SlidingMenu, Path=Width}" />
+            <ColumnDefinition Width="40"/>
             <ColumnDefinition Width="30"/>
         </Grid.ColumnDefinitions>
 
-        <Grid  Grid.Column="0" Background="#FF1E1D1D" Margin="0,0,0,-434" Grid.Row="1">
+
+
+        <Grid x:Name="SlidingMenu" Background="#FF1E1D1D" Margin="0,0,0,-434" Grid.Column="0" Width="200" Grid.RowSpan="2">
             <StackPanel Margin="10">
-                <Button Content="Home" Height="40" Margin="0,100,0,0"/>
-                <Button Content="Currency info" Height="40" Margin="0,10,0,0"/>
-                <Button Content="Currency search" Height="40" Margin="0,10,0,0"/>
+                <Button Content="Home" Height="40" Margin="0,10,0,0" TextBlock.Foreground="White"/>
+                <Button Content="Currency info" Height="40" Margin="0,10,0,0" TextBlock.Foreground="White"/>
+                <Button Content="Currency search" Height="40" Margin="0,10,0,0" TextBlock.Foreground="White"/>
             </StackPanel>
         </Grid>
 
-        <Grid Background="#FF1E1D1D" Margin="0,0,0,5" Grid.Column="0">
-            <StackPanel Margin="2">
-                <Button Content="Menu" Height="30" Width="40" Margin="-150,5,0,10"/>
-            </StackPanel>
-        </Grid>
+        <Button x:Name="ButtonClose" 
+        Grid.Column="1"
+        Content="Close" 
+        Width="Auto"
+        TextBlock.Foreground="White"
+        Background="#FF100F0F" Margin="0,0,0,-434" Grid.RowSpan="2" BorderThickness="0,0,0,0"/>
 
+        <Button x:Name="ButtonOpen" 
+         Grid.Column="1"
+         Content="Open" 
+         Width="0"
+         TextBlock.Foreground="White"
+         Background="#FF100F0F" Margin="0,0,0,-434" Grid.RowSpan="2" BorderThickness="0,0,0,0"/>
     </Grid>
 </Window>
