@@ -24,5 +24,15 @@ namespace TestTaskApi
 		{
 			InitializeComponent();
 		}
+
+		private void ButtonOpen_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+		{
+
+		}
+
+		private void ButtonOpen_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }
