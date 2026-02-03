@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestTaskApi.ViewModels;
 
 namespace TestTaskApi
 {
@@ -20,7 +21,10 @@ namespace TestTaskApi
 		public MainWindow()
 		{
 			InitializeComponent();
+			MainWindowViewModel vm = new MainWindowViewModel();
+			DataContext = vm;
 		}
+		private Page _currentPage;
 
 		private void ButtonOpen_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
 		{
@@ -38,6 +42,11 @@ namespace TestTaskApi
 		}
 
 		private void Home_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void InfoB_Click(object sender, RoutedEventArgs e)
 		{
 
 		}
