@@ -13,33 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TestTaskApi
+namespace TestTaskApi.Pages
 {
-	public partial class MainWindow : Window
+	/// <summary>
+	/// Логика взаимодействия для Info.xaml
+	/// </summary>
+	public partial class Info : Page
 	{
-		public MainWindow()
+		public Info()
 		{
 			InitializeComponent();
-		}
-
-		private void ButtonOpen_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-		{
-
-		}
-
-		private void ButtonOpen_Click(object sender, RoutedEventArgs e)
-		{
-
-		}
-
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-
-		}
-
-		private void Home_Click(object sender, RoutedEventArgs e)
-		{
-
 		}
 	}
 }
