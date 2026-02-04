@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestTaskApi.ViewModels;
 
 namespace TestTaskApi.Pages
 {
@@ -23,6 +24,8 @@ namespace TestTaskApi.Pages
 		public Info()
 		{
 			InitializeComponent();
+			InfoViewModel vm = new InfoViewModel();
+			DataContext = vm;
 		}
 	}
 }
