@@ -21,6 +21,7 @@ namespace TestTaskApi.ViewModels
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
+
 		private void OnPropertyChanged([CallerMemberName] string prop = null)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
@@ -54,6 +55,8 @@ namespace TestTaskApi.ViewModels
 		public ICommand HomeCommand => new RelayCommand(_ => CurrentPage = Home);
 		public ICommand InfoCommand => new RelayCommand(_ => CurrentPage = Info);
 		public ICommand SearchCommand => new RelayCommand(_ => CurrentPage = Search);
+
+
 
 	}
 }

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TestTaskApi.ViewModels;
 
+
 namespace TestTaskApi.Pages
 {
 	/// <summary>
@@ -26,6 +27,8 @@ namespace TestTaskApi.Pages
 			InitializeComponent();
 			HomeViewModel vm = new HomeViewModel();
 			DataContext = vm;
+
+
 		}
 	}
 }
