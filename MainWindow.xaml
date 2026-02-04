@@ -50,7 +50,7 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="40"/>
             <ColumnDefinition Width="{Binding ElementName=SlidingMenu, Path=Width}"/>
             <ColumnDefinition Width="790*"/>
         </Grid.ColumnDefinitions>
