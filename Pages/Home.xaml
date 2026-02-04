@@ -27,7 +27,8 @@
                             Padding="16"
                             Margin="10"
                             BorderBrush="#FBC02D"
-                            BorderThickness="1">
+                            BorderThickness="1"
+                                >                            
 
                             <Grid>
                                 <Grid.RowDefinitions>

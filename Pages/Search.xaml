@@ -8,7 +8,62 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Search">
 
-    <Grid Background="white">
-        
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Row="0"
+                 Height="42"
+                 FontSize="16"
+                 Padding="10"
+                 Background="#1E1E1E"
+                 Foreground="White"
+                 BorderBrush="#FBC02D"
+                 BorderThickness="1"
+                 Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                 ToolTip="Search by name or symbol"/>
+
+        <ScrollViewer Grid.Row="1" Margin="0 20 0 0">
+            <ItemsControl ItemsSource="{Binding FilteredCurrencies}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel ItemWidth="260"
+                                   ItemHeight="140"
+                                   HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#1E1E1E"
+                                BorderBrush="#FBC02D"
+                                BorderThickness="1"
+                                CornerRadius="10"
+                                Padding="16"
+                                Margin="10">
+
+                            <StackPanel>
+                                <TextBlock Text="{Binding Name}"
+                                           Foreground="White"
+                                           FontSize="16"
+                                           FontWeight="Bold"/>
+
+                                <TextBlock Text="{Binding Symbol}"
+                                           Foreground="#BDBDBD"
+                                           FontSize="12"/>
+
+                                <TextBlock Text="{Binding PriceUsd, StringFormat={}{0:N2} $}"
+                                           Foreground="#FBC02D"
+                                           FontSize="18"
+                                           Margin="0 6 0 0"/>
+                            </StackPanel>
+
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Page>

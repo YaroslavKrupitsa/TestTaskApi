@@ -41,6 +41,43 @@ namespace TestTaskApi.Services
 
 			return list;
 		}
+
+		public async Task<List<CryptoCurrency>> GetTopAsync(int limit)
+		{
+			var url =
+				"https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest" +
+				"?start=1&limit=" + limit + "&convert=USD";
+
+			 var client = new HttpClient();
+			client.DefaultRequestHeaders.Add("X-CMC_PRO_API_KEY", ApiKey);
+
+			var response = await client.GetAsync(url);
+			response.EnsureSuccessStatusCode();
+
+			var json = await response.Content.ReadAsStringAsync();
+			 var doc = JsonDocument.Parse(json);
+
+			var list = new List<CryptoCurrency>();
+
+			foreach (var item in doc.RootElement.GetProperty("data").EnumerateArray())
+			{
+				list.Add(new CryptoCurrency
+				{
+					Name = item.GetProperty("name").GetString(),
+					Symbol = item.GetProperty("symbol").GetString(),
+					PriceUsd = item.GetProperty("quote")
+								   .GetProperty("USD")
+								   .GetProperty("price")
+								   .GetDecimal(),
+					MarketCap = item.GetProperty("quote")
+									.GetProperty("USD")
+									.GetProperty("market_cap")
+									.GetDecimal()
+				});
+			}
+
+			return list;
+		}
 	}
 }
 
