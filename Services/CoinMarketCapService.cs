@@ -78,6 +78,37 @@ namespace TestTaskApi.Services
 
 			return list;
 		}
+
+		public async Task<CryptoCurrencyDetail> GetCurrencyInfoAsync(int id)
+		{
+			var url = $"https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?id={id}&convert=USD";
+
+			var client = new HttpClient();
+			client.DefaultRequestHeaders.Add("X-CMC_PRO_API_KEY", ApiKey);
+
+			var response = await client.GetAsync(url);
+			response.EnsureSuccessStatusCode();
+
+			var json = await response.Content.ReadAsStringAsync();
+			 var doc = JsonDocument.Parse(json);
+
+			var data = doc.RootElement.GetProperty("data").GetProperty(id.ToString());
+
+			var quote = data.GetProperty("quote").GetProperty("USD");
+
+			return new CryptoCurrencyDetail
+			{
+				Name = data.GetProperty("name").GetString(),
+				Symbol = data.GetProperty("symbol").GetString(),
+				PriceUsd = quote.GetProperty("price").GetDecimal(),
+				Volume24h = quote.GetProperty("volume_24h").GetDecimal(),
+				PercentChange1h = quote.GetProperty("percent_change_1h").GetDecimal(),
+				PercentChange24h = quote.GetProperty("percent_change_24h").GetDecimal(),
+				PercentChange7d = quote.GetProperty("percent_change_7d").GetDecimal()
+			};
+		}
+
+
 	}
 }
 

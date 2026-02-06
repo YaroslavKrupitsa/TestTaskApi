@@ -28,7 +28,7 @@ namespace TestTaskApi.ViewModels
 		}
 
 		private Page Home;
-		private Page Info;
+		private Page Exchange;
 		private Page Search;
 		
 		private Page _currentPage;
@@ -46,14 +46,14 @@ namespace TestTaskApi.ViewModels
 		public MainWindowViewModel()
 		{
 			Home = new Pages.Home();
-			Info = new Pages.Info();
+			Exchange = new Pages.Exchange();
 			Search = new Pages.Search();
 			
 			_currentPage = Home;
 		}
 
 		public ICommand HomeCommand => new RelayCommand(_ => CurrentPage = Home);
-		public ICommand InfoCommand => new RelayCommand(_ => CurrentPage = Info);
+		public ICommand ExchangeCommand => new RelayCommand(_ => CurrentPage = Exchange);
 		public ICommand SearchCommand => new RelayCommand(_ => CurrentPage = Search);
 
 

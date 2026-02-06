@@ -17,14 +17,14 @@ using TestTaskApi.ViewModels;
 namespace TestTaskApi.Pages
 {
 	/// <summary>
-	/// Логика взаимодействия для Info.xaml
+	/// Логика взаимодействия для Exchange.xaml
 	/// </summary>
-	public partial class Info : Page
+	public partial class Exchange : Page
 	{
-		public Info()
+		public Exchange()
 		{
 			InitializeComponent();
-			InfoViewModel vm = new InfoViewModel();
+			ExchangeViewModel vm = new ExchangeViewModel();
 			DataContext = vm;
 		}
 	}

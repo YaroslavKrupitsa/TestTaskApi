@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestTaskApi.Models
 {
-	 public class CryptoCurrency
+	public class CryptoCurrencyDetail
 	{
 		public string Id { get; set; }
 		public string Name { get; set; }
@@ -16,8 +16,10 @@ namespace TestTaskApi.Models
 		public decimal PercentChange1h { get; set; }
 		public decimal PercentChange24h { get; set; }
 		public decimal PercentChange7d { get; set; }
-		public decimal MarketCap { get; set; }
 
 		public List<decimal> PriceHistory { get; set; } = new List<decimal>();
 	}
+
+	
+
 }
